@@ -1,4 +1,4 @@
-package frame.lecture;
+package lecture.frame;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -18,7 +18,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import frame.FrameBase;
-import util.lecture.SwingHelper;
+import lecture.util.SwingHelper;
 
 public class StartBoxFrame extends FrameBase {
 

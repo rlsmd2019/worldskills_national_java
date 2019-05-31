@@ -10,7 +10,6 @@ public class User {
 	public int point;
 	public String grade;
 	
-	
 	public User(int no, String id, String pwd, String name, String birthDate, int point, String grade) {
 		super();
 		this.no = no;
@@ -21,7 +20,7 @@ public class User {
 		this.point = point;
 		this.grade = grade;
 	}
-	
+
 	public float getDiscount() {
 		
 		if (grade.equals("Bronze")) {

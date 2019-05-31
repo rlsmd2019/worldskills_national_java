@@ -24,7 +24,6 @@ public class UserManager {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public static int getTotalAmount(int userNo) {

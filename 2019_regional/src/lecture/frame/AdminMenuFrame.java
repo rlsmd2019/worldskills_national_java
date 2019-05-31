@@ -1,4 +1,4 @@
-package frame.lecture;
+package lecture.frame;
 
 import frame.FrameBase;
 

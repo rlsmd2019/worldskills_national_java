@@ -1,4 +1,4 @@
-package util.lecture;
+package lecture.util;
 
 import java.awt.Dimension;
 import java.awt.Image;
