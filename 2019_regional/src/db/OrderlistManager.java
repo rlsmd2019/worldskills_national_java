@@ -115,23 +115,22 @@ public class OrderlistManager {
 					"(아니오를 클릭 시 현금결제가 됩니다", "결제수단", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 		}
 		
-		if (answer == JOptionPane.NO_OPTION) {
+		if (answer != JOptionPane.YES_OPTION) {
 			// point 쌓기 및 grade 처리
 			for (Orderlist orderlist2 : orderlist) {
 				insertOrderlist(orderlist2);
 			}
 			
 			// 5% 누적
-			
-			SessionManager.currentUser.totalOrderedAmount += sumAmount;
+			int totalAmount = UserManager.getTotalAmount(userNo) + sumAmount;
 			
 			String tmpGrade = curGrade;
 			
-			if (SessionManager.currentUser.totalOrderedAmount >= 800000) {
+			if (totalAmount >= 800000) {
 				tmpGrade = "Gold";
-			} else if (SessionManager.currentUser.totalOrderedAmount >= 500000) {
+			} else if (totalAmount >= 500000) {
 				tmpGrade = "Silver";
-			} else if (SessionManager.currentUser.totalOrderedAmount >= 300000) {
+			} else if (totalAmount >= 300000) {
 				tmpGrade = "Bronze";
 			}
 			

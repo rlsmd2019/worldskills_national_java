@@ -10,12 +10,14 @@ public class UserManager {
 	static PreparedStatement pstLogin;
 	static PreparedStatement pstInsert;
 	static PreparedStatement pstDuplicated;
+	static PreparedStatement pstGetTotalAmount;
 	static PreparedStatement pstUpdatePointAndGrade;
 	
 	static {
 		
 		try {
-			pstLogin = JDBCManager.con.prepareStatement("SELECT *, (SELECT SUM(o_amount) FROM orderlist AS o WHERE o.u_no = u.u_no) FROM user AS u WHERE u_id = ? AND u_pw = ?");
+			pstLogin = JDBCManager.con.prepareStatement("SELECT * FROM user WHERE u_id = ? AND u_pw = ?");
+			pstGetTotalAmount = JDBCManager.con.prepareStatement("SELECT SUM(o_amount) FROM orderlist WHERE u_no = ?");
 			pstInsert = JDBCManager.con.prepareStatement("INSERT INTO user VALUES(0, ?, ?, ?, ?, 0, '¿œπ›')");
 			pstDuplicated = JDBCManager.con.prepareStatement("SELECT u_no FROM user WHERE u_id = ?");
 			pstUpdatePointAndGrade = JDBCManager.con.prepareStatement("UPDATE user SET u_point = ?, u_grade = ? WHERE u_no = ?");
@@ -23,6 +25,23 @@ public class UserManager {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public static int getTotalAmount(int userNo) {
+		try {
+			pstGetTotalAmount.setObject(1, userNo);
+			
+			try (var rs = pstGetTotalAmount.executeQuery()) {
+				if (rs.next()) {
+					return rs.getInt(1);
+				}
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
 	}
 	
 	public static void updatePointAndGrade(int point, String grade, int userNo) {
@@ -86,7 +105,7 @@ public class UserManager {
 					return null;
 				}
 				
-				return new User(rs.getInt(1), id, pwd, rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7), rs.getInt(8));
+				return new User(rs.getInt(1), id, pwd, rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7));
 			}
 			
 		} catch (SQLException e) {

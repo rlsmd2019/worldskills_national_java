@@ -109,7 +109,7 @@ public class Top5Frame extends FrameBase {
 	}
 	
 	public static void main(String[] args) {
-		SessionManager.login(new User(1, "coffee1", "1234", "¿Ã±‚πŒ", "2019-01-01", 0, "Gold", 50000));
+		SessionManager.login(new User(1, "coffee1", "1234", "¿Ã±‚πŒ", "2019-01-01", 0, "Gold"));
 		
 		new Top5Frame().setVisible(true);
 	}

@@ -13,7 +13,6 @@ public class FrameBase extends JFrame {
 		setSize(width, height);
 		setTitle(title);
 		setLocationRelativeTo(null);
-		
 	}
 	
 }

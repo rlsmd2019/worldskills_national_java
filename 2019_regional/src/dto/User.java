@@ -10,9 +10,8 @@ public class User {
 	public int point;
 	public String grade;
 	
-	public int totalOrderedAmount;
 	
-	public User(int no, String id, String pwd, String name, String birthDate, int point, String grade, int totalOrderedAmount) {
+	public User(int no, String id, String pwd, String name, String birthDate, int point, String grade) {
 		super();
 		this.no = no;
 		this.id = id;
@@ -21,7 +20,6 @@ public class User {
 		this.birthDate = birthDate;
 		this.point = point;
 		this.grade = grade;
-		this.totalOrderedAmount = totalOrderedAmount;
 	}
 	
 	public float getDiscount() {
